@@ -2,6 +2,18 @@ RubyTestView = require './ruby-test-view'
 
 module.exports =
   config:
+    exUnitAllCommand:
+      title: "ExUnit: Run all tests"
+      type: 'string'
+      default: "mix test"
+    exUnitFileCommand:
+      title: "ExUnit: Run test in file"
+      type: 'string'
+      default: "mix test {relative_path}"
+    exUnitSingleCommand:
+      title: "ExUnit: Run test at line number"
+      type: 'string'
+      default: "mix test {relative_path}:{line_number}"
     minitestAllCommand:
       title: "Minitest command: Run all tests"
       type: 'string'

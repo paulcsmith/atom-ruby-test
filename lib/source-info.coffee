@@ -10,6 +10,7 @@ module.exports =
       rspec:   'rspec'
       feature: 'cucumber'
       minitest: 'minitest'
+      ex_unit: 'exUnit'
 
     regExpForTestStyle:
       unit: /def\s(.*?)$/
@@ -144,7 +145,9 @@ module.exports =
           matches[1]
 
     projectType: ->
-      if fs.existsSync(@projectPath() + '/test')
+      if fs.existsSync(@projectPath() + '/test/test_helper.exs')
+        atom.config.get("ruby-test.testFramework") || 'exUnit'
+      else if fs.existsSync(@projectPath() + '/test')
         atom.config.get("ruby-test.testFramework") || 'test'
       else if fs.existsSync(@projectPath() + '/spec')
         atom.config.get("ruby-test.specFramework") || 'rspec'
